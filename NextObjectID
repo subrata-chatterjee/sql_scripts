@@ -1,0 +1,15 @@
+--This is for ARCSDE NextObjectID #NextObjectID #SDE #Sql spatial
+Create FUNCTION [dbo].[GetNextObjectId](@schema nvarchar(max), @tablename nvarchar (max))  
+RETURNS geometry 
+AS   
+
+BEGIN  
+   -- DECLARE @shape geometry;  
+    --SET @shape = geometry::STGeomFromText(@wkt,4283);  
+    --RETURN @shape; 
+	
+	DECLARE @OID as integer
+    EXEC dbo.next_rowid @schema, @tablename, @oid OUTPUT;
+     
+	RETURN @OID
+END;
